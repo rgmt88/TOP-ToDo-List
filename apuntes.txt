@@ -1,0 +1,14 @@
+Properties of the todo-items, needs to be dynamically created
+1. title
+2. description
+3. projects
+4. dueDate
+5. priority
+
+ToDos need to be organized by projects
+
+separate your application logic (i.e. creating new todos, setting todos as complete, changing todo priority etc.) from the DOM-related stuff, so keep all of those things in separate modules
+
+use date-fns
+
+store data locally using localStorage
