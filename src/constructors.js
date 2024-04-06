@@ -1,4 +1,4 @@
-function TodoItem(title, description, project, dueDate, priority) {
+export function TodoItem(title, description, project, dueDate, priority) {
     this.title = title;
     this.description = description;
     this.project = project;
@@ -6,7 +6,7 @@ function TodoItem(title, description, project, dueDate, priority) {
     this.priority = priority;
 }
 
-function Project(name) {
+export function Project(name) {
     this.name = name;
     this.todos = [];
 
@@ -23,11 +23,11 @@ function Project(name) {
     };
 }
 
-function ProjectManager() {
+export function ProjectManager() {
     this.projects = {};
 
     this.addProject = function(name) {
-        if (!this.project[name]) {
+        if (!this.projects[name]) {
             this.projects[name] = new Project(name);
         }
     };
