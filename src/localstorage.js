@@ -1,4 +1,4 @@
-import { TodoItem, Project, ProjectManager } from "./constructors";
+import { TodoItem, ProjectManager } from "./constructors";
 
 // Save current state to local storage
 export function saveData(projectManager) {
@@ -21,7 +21,7 @@ export function loadData() {
         });
       });
     }
-  
+    
     return projectManager; // Return the (potentially updated) projectManager
 }
   

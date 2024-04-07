@@ -1,7 +1,11 @@
 import './style.css';
-import { setupAddProjectButton } from './script';
+import { setupAddProjectButton } from './userinteractions';
+import { updateProjectListUI } from './ui';
 
 document.addEventListener('DOMContentLoaded', (event) => {
+    // Ensures DOM content is fully loaded before attempting to update the UI
+    updateProjectListUI();
+    
     setupAddProjectButton();
     // Call other setup functions here as your app grows
 });
