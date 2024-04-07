@@ -1,6 +1,8 @@
 import { TodoItem, Project, ProjectManager } from "./constructors";
+import { saveData, loadData } from "./localstorage";
 
-var projectManager = new ProjectManager();
+// Initialize projectManager by capturing the return value of loadData()
+var projectManager = loadData();
 
 // Adding projects
 projectManager.addProject('Work');
@@ -14,6 +16,17 @@ projectManager.addTodoToProject(todo1);
 projectManager.addTodoToProject(todo2);
 
 // Displaying todos by project
+console.log('Todos for Work: ', projectManager.getTodosByProject('Work'));
+console.log('Todos for Personal: ', projectManager.getTodosByProject('Personal'));
+
+// Change todo project
+projectManager.removeTodoFromProject(todo1.project, todo1.title);
+projectManager.addProject('Default');
+todo1.project = 'Default';
+projectManager.addTodoToProject(todo1);
+
+// Displaying todos by project
+console.log('Todos for Default: ', projectManager.getTodosByProject('Default'));
 console.log('Todos for Work: ', projectManager.getTodosByProject('Work'));
 console.log('Todos for Personal: ', projectManager.getTodosByProject('Personal'));
 
