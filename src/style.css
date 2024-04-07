@@ -44,3 +44,10 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+button.deleteBtn {
+    margin-left: 10px;
+    background-color: red;
+    color: white;
+    /* Add more styling as needed */
+}

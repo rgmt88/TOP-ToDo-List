@@ -19,13 +19,14 @@ export function updateProjectListUI() {
         // Create a delete button
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
+        deleteBtn.className = 'deleteBtn';
         deleteBtn.onclick = function() {
             projectManager.removeProject(project.name);
             updateProjectListUI();
             saveData(projectManager);
         };
         li.appendChild(deleteBtn);
-        
+
         ul.appendChild(li);
     });
 }
