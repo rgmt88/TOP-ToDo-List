@@ -32,6 +32,10 @@ export function ProjectManager() {
         }
     };
 
+    this.getProjects = function() {
+        return Object.values(this.projects);
+    };
+
     this.addTodoToProject = function(todoItem) {
         if (!this.projects[todoItem.project]) {
             console.warn(`Project "${todoItem.project}" does not exist. Creating it.`);

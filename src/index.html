@@ -6,9 +6,25 @@
     <title>TOD-ToDo-List</title>
 </head>
 <body>
-    <h2>My ToDo List</h2>
-    <div class="action-buttons">
+    <header>
+        <h1>My ToDo List</h1>
+    </header>
+    <main>
+        <aside id="projectList">
+            <h2>Projects</h2>
+            <ul id="htmlprojectlist">
+                <!-- Project list will be dynamically populated here -->
+            </ul>
+            <button id="addProject">Add Project</button>
+        </aside>
         
-    </div>
+        <section id="todos">
+            <h2>ToDos</h2>
+            <ul>
+                <!-- Todo list for the selected project will be dynamically populated here -->
+            </ul>
+            <button id="addTodo">Add ToDo</button>
+        </section>
+    </main>
 </body>
 </html>
