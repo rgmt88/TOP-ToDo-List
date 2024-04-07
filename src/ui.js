@@ -1,3 +1,4 @@
+import { saveData } from "./localstorage";
 import { getProjectManager } from "./projectManagerModule";
 
 export function updateProjectListUI() {
@@ -14,6 +15,17 @@ export function updateProjectListUI() {
     projects.forEach(project => {
         const li = document.createElement('li');
         li.textContent = project.name;
+        
+        // Create a delete button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.onclick = function() {
+            projectManager.removeProject(project.name);
+            updateProjectListUI();
+            saveData(projectManager);
+        };
+        li.appendChild(deleteBtn);
+        
         ul.appendChild(li);
     });
 }
