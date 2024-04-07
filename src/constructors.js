@@ -32,6 +32,14 @@ export function ProjectManager() {
         }
     };
 
+    this.removeProject = function(name) {
+        if (this.projects[name]) {
+            delete this.projects[name];
+            return true;
+        }
+        return false;
+    };
+
     this.getProjects = function() {
         return Object.values(this.projects);
     };
