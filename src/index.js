@@ -1,5 +1,5 @@
 import './style.css';
-import { setupAddProjectButton } from './userinteractions';
+import { setupAddProjectButton, setupAddTodoModal, setupAddTodoForm } from './userinteractions';
 import { updateProjectListUI } from './ui';
 
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -7,7 +7,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     updateProjectListUI();
     
     setupAddProjectButton();
-    // Call other setup functions here as your app grows
+    
+    setupAddTodoModal();
+
+    setupAddTodoForm();
 });
 
 
