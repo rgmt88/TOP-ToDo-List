@@ -1,6 +1,7 @@
 import { getProjectManager } from "./projectManagerModule";
 import { updateProjectListUI } from "./ui";
 import { saveData } from "./localstorage";
+import { TodoItem } from "./constructors";
 
 export function setupAddProjectButton() {
     const addProjectButton = document.getElementById('addProject');
@@ -30,6 +31,7 @@ export function setupAddTodoModal() {
 
     // When the user clicks the button, open the modal
     btn.onclick = function() {
+        populateProjectDropdown();
         modal.style.display = 'block';
     }
 
@@ -44,6 +46,8 @@ export function setupAddTodoModal() {
             modal.style.display = 'none';
         }
     }
+
+    closeTodoModal();
 }
 
 export function closeTodoModal() {
@@ -54,10 +58,25 @@ export function closeTodoModal() {
     modal.style.display = 'none';
 }
 
+function populateProjectDropdown() {
+    const projectDropdown = document.getElementById('todoProject');
+    // Clear existing options
+    projectDropdown.innerHTML = '';
+
+    // Fetch projects
+    const projects = getProjectManager().getProjects();
+    projects.forEach(project => {
+        const option = document.createElement('option');
+        option.value = project.name;
+        option.textContent = project.name;
+        projectDropdown.appendChild(option);
+    });
+}
+
 export function setupAddTodoForm() {
     const addTodoForm = document.getElementById('addTodoForm');
 
-    addTodoForm.addEventListener('onsubmit', function(event) {
+    addTodoForm.addEventListener('submit', function(event) {
         // Prevent form from submitting the traditional way
         event.preventDefault();
 
@@ -72,7 +91,11 @@ export function setupAddTodoForm() {
         var todo = new TodoItem(title, description, projectName, dueDate, priority);
         projectManager.addTodoToProject(todo);
 
+        // Close modal and update UI
         closeTodoModal();
         updateProjectListUI();
+
+        // Save the updated manager state
+        saveData(projectManager);
     });
 }
