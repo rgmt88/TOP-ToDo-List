@@ -15,6 +15,9 @@ export function updateProjectListUI() {
     projects.forEach(project => {
         const li = document.createElement('li');
         li.textContent = project.name;
+        li.addEventListener('click', function() {
+            displayTodosForProject(project.name);
+        });
         
         // Create a delete button
         const deleteBtn = document.createElement('button');
@@ -28,5 +31,19 @@ export function updateProjectListUI() {
         li.appendChild(deleteBtn);
 
         ul.appendChild(li);
+    });
+}
+
+export function displayTodosForProject(projectName) {
+    const projectManager = getProjectManager();
+    const todos = projectManager.getTodosByProject(projectName);
+    const todosList = document.getElementById('todoItemsList');
+    // Clear existing todos
+    todosList.innerHTML = '';
+
+    todos.forEach(todo => {
+        const li = document.createElement('li');
+        li.textContent = `${todo.title} - Due: ${todo.dueDate}`;
+        todosList.appendChild(li);
     });
 }
