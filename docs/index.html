@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOD-ToDo-List</title>
+<script defer src="bundle.js"></script></head>
+<body>
+    <header>
+        <h1>My ToDo List</h1>
+    </header>
+    <main>
+        <aside id="projectList">
+            <h2>Projects</h2>
+            <ul id="htmlprojectlist">
+                <!-- Project list will be dynamically populated here -->
+            </ul>
+            <button id="addProject">Add Project</button>
+        </aside>
+        
+        <section id="todos">
+            <h2>ToDos</h2>
+            <ul id="todoItemsList">
+                <!-- Todo list for the selected project will be dynamically populated here -->
+            </ul>
+            <button id="addTodo">Add ToDo</button>
+        </section>
+    </main>
+
+    <div id="addTodoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="addTodoForm">
+                <label for="todoTitle">Title:</label>
+                <input type="text" id="todoTitle" name="todoTitle" required>
+
+                <label for="todoDescription">Description:</label>
+                <textarea id="todoDescription" name="todoDescription"></textarea>
+
+                <label for="todoDueDate">Due Date:</label>
+                <input type="date" id="todoDueDate" name="todoDueDate">
+
+                <label for="todoProject">Project:</label>
+                <select id="todoProject" name="todoProject" required>
+                    <!-- Options will be dynamically populated here-->
+                </select>
+
+                <label for="todoPriority">Priority:</label>
+                <select id="todoPriority" name="todoPriority">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+
+                <button type="submit">Add ToDo</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
